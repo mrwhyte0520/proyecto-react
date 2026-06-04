@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/material": "^9.0.1",
+    "antd": "^6.4.3",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },
@@ -17,6 +19,7 @@
     "@babel/core": "^7.29.0",
     "@eslint/js": "^10.0.1",
     "@rolldown/plugin-babel": "^0.2.3",
+    "@types/antd": "^0.12.32",
     "@types/babel__core": "^7.20.5",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
