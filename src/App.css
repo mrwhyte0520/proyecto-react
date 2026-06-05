@@ -1,13 +1,16 @@
-Body{
-  background: linear-gradient(to right, rgb(58, 58, 175), rgb(150, 150, 227));
-}
+.carta{
+   width: 275px ;
 
-.BotonSiguiente{
+   height: 385px;
+   position: relative;
+   transform: translate(-50%,-50%);
 
-background: linear-gradient(to right, rgb(9, 9, 86), rgb(2, 2, 15)); 
-color: aliceblue;
+   top: 50%;
+   left: 60%;
+
 }
-.BotonAtras{
-background: linear-gradient(to right, rgb(9, 9, 86), rgb(2, 2, 15));
-color: aliceblue;
+.imagencarta{
+   width: 190px;
+   height: 190px;
+   
 }

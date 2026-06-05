@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import type {   pokemon,  pokemonsdetalle } from "../../api/pokeinfo/Models";
-import {  getpokemon,getpokemondetalle } from "../../api/pokeinfo";
-import {Card, Pagination, Col, Row} from 'antd';
+import {  getpokemon,getpokemondetalle, busquedapokemon } from "../../api/pokeinfo";
+import {Card,  Col, Row, Form,Button,Input} from 'antd';
 
 
  
@@ -10,11 +10,29 @@ function Pokemones(){
   const [nextUrl, setNextUrl] = useState<string>("");
   const [previousUrl, setPreviousUrl] = useState<string>("");
   const [count, setCount] = useState(0);
+   const [form] = Form.useForm();
+  
+  const handleformsubmit = (values: any) => {
+    busquedapokemon(values.search)
+        .then(data => {
+            setPokemons([data]);
+            form.resetFields();
+        })
+        
+        .catch(() => {
+            alert("No se encontro");
+            form.resetFields()
+        }
+    
+    );
+}
+
   useEffect(() => {
     getpokemon().then(data => {
         setNextUrl(data.next);
         setPreviousUrl(data.previous);
         setCount(data.count);
+        
 
         Promise.all(
             data.results.map((pokemon: pokemon) =>
@@ -29,10 +47,16 @@ function Pokemones(){
  return <div>
     <h1> Mis Pokemones</h1>
 
-    <form>  
-        <input type="text" placeholder="Buscar pokemon" />
-        <button type="submit">Buscar</button>
-    </form>
+    <Form  form={form} onFinish={handleformsubmit}>
+        <Form.Item name="search">
+           <Input placeholder="Buscar Pokemon"></Input>
+        </Form.Item>
+        <Form.Item>
+            <Button htmlType={"submit"} type="primary" >Buscar
+
+            </Button>
+        </Form.Item>
+    </Form>
     <button className="BotonAtras"  disabled={!previousUrl} onClick={() => {
         getpokemon(previousUrl).then(data => {
             setNextUrl(data.next);
@@ -74,18 +98,17 @@ function Pokemones(){
    
     {pokemons.map(pokemon => (
             
-    <Col key={pokemon.id} span={4}>
-       <Card title={`${pokemon.id} ${pokemon.name}` }style={{ width: 200 ,height: 200}   }>
+    <Col key={pokemon.id} span={3.5}>
+       <Card className="carta"  title={` ${pokemon.id} ${pokemon.name}` }   >
          {pokemon.sprites?.front_default && (
-      <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+      <img className="imagencarta" src={pokemon.sprites.front_default} alt={pokemon.name} />
        )}
       </Card>
    </Col>
          ))}
 </Row>
 
-
-   
+ 
 
 
  </div> 

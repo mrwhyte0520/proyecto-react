@@ -10,3 +10,10 @@ export function getpokemondetalle(url:string){
     
    
 } 
+
+export function busquedapokemon(nombre: string) {
+    return fetch(
+        `https://pokeapi.co/api/v2/pokemon/${nombre}`
+    )
+    .then(response => response.json());
+}
