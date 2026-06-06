@@ -1,16 +1,182 @@
-.carta{
-   width: 275px ;
+.carta {
+  width: 275px;
+  height: 385px;
+  position: relative;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 60%;
+  background: linear-gradient(145deg, #6a0dad, rgba(14, 14, 34, 0.98));
+  border: 3px solid rgba(218, 197, 240, 0.878);
+  border-radius: 14px;
+  padding: 16px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
 
-   height: 385px;
-   position: relative;
-   transform: translate(-50%,-50%);
+.carta:hover {
+  box-shadow: 0 0 70px rgba(187, 111, 215, 0.4), 0 0 60px rgba(138, 43, 226, 0.1);
+  border-color: rgba(138, 43, 226, 0.6);
+  
+}
 
-   top: 50%;
-   left: 60%;
+.imagencarta {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  padding: 12px;
+  background: rgba(20, 20, 45, 0.6);
+  border: 2px dashed rgba(138, 43, 226, 0.25);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.carta:hover .imagencarta {
+  border-color: rgba(138, 43, 226, 0.5);
+  box-shadow: 0 0 16px rgba(138, 43, 226, 0.2), inset 0 0 16px rgba(138, 43, 226, 0.05);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.ant-row {
+  justify-content: center;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.ant-col {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.ant-card-head {
+  background: transparent !important;
+  border-bottom: 3px solid rgba(138, 43, 226, 0.2) !important;
+  color: #e0e0e0 !important;
+  font-weight: 700;
+  text-transform: capitalize;
+  
+  text-align: center;
+  padding: 12px 8px !important;
+  min-height: unset !important;
+}
+
+.ant-card-body {
+  padding: 12px 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: transparent !important;
+}
+.id {
+  font-size: 28px;
+  font-weight: 900;
+  color:gold;
+  margin-right: 8px;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+
+.nombre {
+  font-size: 18px;
+  color: #E0E0E0;
+}
+.tipos{
+  margin-right: 8px;
+  position: absolute;
+  left: 10px;
+  top: 87%;
+}
+.detalle{
+
+background: linear-gradient(135deg, #6a0dad, #3a0ca3) !important;
+border: 1px solid rgba(138, 43, 226, 0.4) !important;
+border-radius: 8px !important;
+height: 42px !important;
+padding: 0 24px !important;
+font-weight: 600 !important;
+
+letter-spacing: 1px;
+transition: all 0.3s ease !important;
+color: #e0e0e0 !important;
+margin-right: 8px;
+  position: absolute;
+  left: 75px;
+  top: 75%;
 
 }
-.imagencarta{
-   width: 190px;
-   height: 190px;
-   
+form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 500px;
+}
+
+.ant-input {
+  background: rgba(30, 30, 60, 0.8) !important;
+  border: 1px solid rgba(138, 43, 226, 0.3) !important;
+  border-radius: 8px !important;
+  color: #e0e0e0 !important;
+  padding: 10px 16px !important;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  width: 300px !important;
+  margin-left: 10%;
+}
+
+.ant-input:focus,
+.ant-input:hover {
+  border-color: rgba(138, 43, 226, 0.7) !important;
+  box-shadow: 0 0 12px rgba(138, 43, 226, 0.2) !important;
+  background: rgba(40, 40, 80, 0.9) !important;
+}
+
+.ant-input::placeholder {
+  color: rgba(224, 224, 224, 0.4) !important;
+}
+
+.ant-btn-primary {
+  background: linear-gradient(135deg, #6a0dad, #3a0ca3) !important;
+  border: 1px solid rgba(138, 43, 226, 0.4) !important;
+  border-radius: 8px !important;
+  height: 42px !important;
+  padding: 0 24px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease !important;
+  
+margin-left: 25%;
+  
+  
+
+}
+
+.ant-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.4) !important;
+  border-color: rgba(138, 43, 226, 0.7) !important;
+}
+
+.ant-btn-primary:active {
+  transform: translateY(1px);
+}
+
+.ant-form-item {
+  margin-bottom: 0 !important;
 }

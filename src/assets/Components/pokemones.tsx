@@ -45,7 +45,7 @@ function Pokemones(){
 }, []);
    console.log(pokemons);
  return <div>
-    <h1> Mis Pokemones</h1>
+    <h1 className="Titulo" > Mis Pokemones</h1>
 
     <Form  form={form} onFinish={handleformsubmit}>
         <Form.Item name="search">
@@ -72,7 +72,7 @@ function Pokemones(){
             });
         });
     }}>
-        Anteriores
+        Anterior
     </button>
     <button className="BotonSiguiente" disabled={!nextUrl} onClick={() => {
         getpokemon(nextUrl).then(data => {
@@ -90,7 +90,7 @@ function Pokemones(){
         });
     }}
 
-    >Siguientes</button>
+    >  Siguiente</button>
 
    <Row gutter={[16, 16]}>
 
@@ -99,10 +99,19 @@ function Pokemones(){
     {pokemons.map(pokemon => (
             
     <Col key={pokemon.id} span={3.5}>
-       <Card className="carta"  title={` ${pokemon.id} ${pokemon.name}` }   >
+       <Card className="carta"  title={  <>
+    <span className="id">{pokemon.id}</span>
+    <span className="nombre">{pokemon.name}</span>
+  </> }   >
+
          {pokemon.sprites?.front_default && (
       <img className="imagencarta" src={pokemon.sprites.front_default} alt={pokemon.name} />
        )}
+
+      <Button className="detalle">Ver mas</Button>
+       
+       <h1 className="tipos"> Tipo: {pokemon.types[0].type.name}</h1>
+
       </Card>
    </Col>
          ))}
