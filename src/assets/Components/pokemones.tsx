@@ -117,6 +117,8 @@ function Pokemones(){
          ))}
 </Row>
 
+
+
  
 
 
