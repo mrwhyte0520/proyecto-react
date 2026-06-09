@@ -107,38 +107,41 @@ function Pokemones(){
             <span className="nombre">{pokemon.name}</span>
           </>
         }
-        onClick={() => setCartaVolteada(cartaVolteada === pokemon.id ? null : pokemon.id)}
-        style={{ cursor: 'pointer' }}
       >
-        <div className="contenedor-carta">
-          <div className="frente">
-            {pokemon.sprites?.front_default && (
-              <img className="imagencarta" src={pokemon.sprites.front_default} alt={pokemon.name} />
-            )}
-            <h1 className="tipos">Tipo: {pokemon.types[0].type.name}</h1>
-          </div>
-          <div className="atras">
-            <div className="datos-principales">
-              <span>Altura: {pokemon.height}</span>
-              <span>Peso: {pokemon.weight}</span>
+        <div
+          className="card-clickable"
+          onClick={() => setCartaVolteada(cartaVolteada === pokemon.id ? null : pokemon.id)}
+        >
+          <div className="contenedor-carta">
+            <div className="frente">
+              {pokemon.sprites?.front_default && (
+                <img className="imagencarta" src={pokemon.sprites.front_default} alt={pokemon.name} />
+              )}
+              <h1 className="tipos">Tipo: {pokemon.types[0].type.name}</h1>
             </div>
-            <div className="seccion">
-              <h3>Habilidades</h3>
-              <div className="tags">
-                {pokemon.abilities.map(ability => (
-                  <span key={ability.ability.name} className="tag">{ability.ability.name}</span>
-                ))}
+            <div className="atras">
+              <div className="datos-principales">
+                <span>Altura: {pokemon.height}</span>
+                <span>Peso: {pokemon.weight}</span>
               </div>
-            </div>
-            <div className="seccion">
-              <h3>Estadísticas</h3>
-              <div className="stats-grid">
-                {pokemon.stats.map(stat => (
-                  <div key={stat.stat.name} className="stat-item">
-                    <span className="stat-nombre">{stat.stat.name}</span>
-                    <span className="stat-valor">{stat.base_stat}</span>
-                  </div>
-                ))}
+              <div className="seccion">
+                <h3>Habilidades</h3>
+                <div className="tags">
+                  {pokemon.abilities.map(ability => (
+                    <span key={ability.ability.name} className="tag">{ability.ability.name}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="seccion">
+                <h3>Estadísticas</h3>
+                <div className="stats-grid">
+                  {pokemon.stats.map(stat => (
+                    <div key={stat.stat.name} className="stat-item">
+                      <span className="stat-nombre">{stat.stat.name}</span>
+                      <span className="stat-valor">{stat.base_stat}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

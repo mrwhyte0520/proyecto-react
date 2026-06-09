@@ -12,7 +12,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.carta.volteada {
+  transform: translate(-50%, -50%) scale(1.5);
+  z-index: 10;
+  transform-origin: center center;
+  border-color: #b388ff;
+  box-shadow: 0 0 80px rgba(138, 43, 226, 0.5), 0 0 120px rgba(106, 13, 173, 0.2);
 }
 
 .contenedor-carta {
@@ -225,6 +234,11 @@
   align-items: center;
   width: 100%;
   background: transparent !important;
+}
+
+.card-clickable {
+  width: 100%;
+  cursor: pointer;
 }
 .id {
   font-size: 28px;
