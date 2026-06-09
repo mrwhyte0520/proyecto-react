@@ -12,13 +12,135 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.contenedor-carta {
+  display: grid;
+  width: 100%;
+  flex: 1;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carta.volteada .contenedor-carta {
+  transform: scaleX(-1);
+}
+
+.frente,
+.atras {
+  grid-area: 1 / 1 / -1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.frente {
+  visibility: visible;
+}
+
+.atras {
+  transform: scaleX(-1);
+  color: #e0e0e0;
+  padding: 10px;
+  box-sizing: border-box;
+  background: rgba(20, 20, 45, 0.3);
+  border: 1px solid rgba(138, 43, 226, 0.15);
+  visibility: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 43, 226, 0.3) transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.carta.volteada .frente {
+  visibility: hidden;
+}
+
+.carta.volteada .atras {
+  visibility: visible;
+}
+
+.atras::-webkit-scrollbar {
+  width: 4px;
+}
+
+.atras::-webkit-scrollbar-thumb {
+  background: rgba(138, 43, 226, 0.3);
+  border-radius: 3px;
+}
+
+.datos-principales {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(138, 43, 226, 0.12);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #d0d0f0;
+}
+
+.seccion h3 {
+  font-size: 10px;
+  font-weight: 700;
+  color: #b388ff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 5px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.25);
+  width: 100%;
+  text-align: left;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  font-size: 10px;
+  color: #c8c8e0;
+  padding: 2px 8px;
+  background: rgba(138, 43, 226, 0.15);
+  border-radius: 10px;
+  border: 1px solid rgba(138, 43, 226, 0.25);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  padding: 3px 6px;
+  background: rgba(138, 43, 226, 0.08);
+  border-radius: 4px;
+  border-left: 2px solid rgba(138, 43, 226, 0.3);
+}
+
+.stat-nombre {
+  color: #a0a0c0;
+  text-transform: capitalize;
+}
+
+.stat-valor {
+  color: #e0e0ff;
+  font-weight: 700;
 }
 
 .carta:hover {
   box-shadow: 0 0 70px rgba(187, 111, 215, 0.4), 0 0 60px rgba(138, 43, 226, 0.1);
   border-color: rgba(138, 43, 226, 0.6);
-  
 }
 
 .imagencarta {
@@ -93,30 +215,15 @@
   font-size: 18px;
   color: #E0E0E0;
 }
-.tipos{
-  margin-right: 8px;
-  position: absolute;
-  left: 10px;
-  top: 87%;
+.tipos {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: #b388ff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
 }
-.detalle{
 
-background: linear-gradient(135deg, #6a0dad, #3a0ca3) !important;
-border: 1px solid rgba(138, 43, 226, 0.4) !important;
-border-radius: 8px !important;
-height: 42px !important;
-padding: 0 24px !important;
-font-weight: 600 !important;
-
-letter-spacing: 1px;
-transition: all 0.3s ease !important;
-color: #e0e0e0 !important;
-margin-right: 8px;
-  position: absolute;
-  left: 75px;
-  top: 75%;
-
-}
 form {
   display: flex;
   gap: 12px;
@@ -179,36 +286,4 @@ margin-left: 25%;
 
 .ant-form-item {
   margin-bottom: 0 !important;
-}
-.infoPokemon{
-  width: 100%;
-  color: #e0e0e0;
-  text-align: left;
-  padding: 10px;
-  overflow-y: auto;
-}
-
-.infoPokemon h3{
-  color: gold;
-  font-size: 16px;
-  margin: 10px 0 5px 0;
-  text-align: center;
-}
-
-.infoPokemon p{
-  margin: 4px 0;
-  padding: 6px 10px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 6px;
-  border-left: 3px solid #8a2be2;
-  font-size: 14px;
-}
-
-.infoPokemon::-webkit-scrollbar{
-  width: 6px;
-}
-
-.infoPokemon::-webkit-scrollbar-thumb{
-  background: #8a2be2;
-  border-radius: 10px;
 }

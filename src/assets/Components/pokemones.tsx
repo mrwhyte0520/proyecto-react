@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import type {   pokemon,  pokemonsdetalle } from "../../api/pokeinfo/Models";
 import {  getpokemon,getpokemondetalle, busquedapokemon } from "../../api/pokeinfo";
 
-import {Card,  Col, Row, Form,Button,Input} from 'antd';
+import {Card,  Col, Row, Form,Input,Button} from 'antd';
 
 
  
@@ -107,6 +107,8 @@ function Pokemones(){
             <span className="nombre">{pokemon.name}</span>
           </>
         }
+        onClick={() => setCartaVolteada(cartaVolteada === pokemon.id ? null : pokemon.id)}
+        style={{ cursor: 'pointer' }}
       >
         <div className="contenedor-carta">
           <div className="frente">
@@ -116,26 +118,31 @@ function Pokemones(){
             <h1 className="tipos">Tipo: {pokemon.types[0].type.name}</h1>
           </div>
           <div className="atras">
-            <div className="contenido-atras">
-              <h3>Altura: {pokemon.height}</h3>
-              <h3>Peso: {pokemon.weight}</h3>
+            <div className="datos-principales">
+              <span>Altura: {pokemon.height}</span>
+              <span>Peso: {pokemon.weight}</span>
+            </div>
+            <div className="seccion">
               <h3>Habilidades</h3>
-              {pokemon.abilities.map(ability => (
-                <p key={ability.ability.name}>{ability.ability.name}</p>
-              ))}
+              <div className="tags">
+                {pokemon.abilities.map(ability => (
+                  <span key={ability.ability.name} className="tag">{ability.ability.name}</span>
+                ))}
+              </div>
+            </div>
+            <div className="seccion">
               <h3>Estadísticas</h3>
-              {pokemon.stats.map(stat => (
-                <p key={stat.stat.name}>{stat.stat.name}: {stat.base_stat}</p>
-              ))}
+              <div className="stats-grid">
+                {pokemon.stats.map(stat => (
+                  <div key={stat.stat.name} className="stat-item">
+                    <span className="stat-nombre">{stat.stat.name}</span>
+                    <span className="stat-valor">{stat.base_stat}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-        <Button
-          className="detalle"
-          onClick={() => setCartaVolteada(cartaVolteada === pokemon.id ? null : pokemon.id)}
-        >
-          {cartaVolteada === pokemon.id ? "Ocultar Estadísticas" : "Estadísticas"}
-        </Button>
       </Card>
     </Col>
   ))}
