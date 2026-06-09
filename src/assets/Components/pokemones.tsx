@@ -10,7 +10,7 @@ function Pokemones(){
   const [pokemons, setPokemons] = useState<pokemonsdetalle[]>([]);
   const [nextUrl, setNextUrl] = useState<string>("");
   const [previousUrl, setPreviousUrl] = useState<string>("");
- 
+  const [cartaVolteada, setCartaVolteada] = useState<number | null>(null);
   const [form] = Form.useForm();
   
   const handleformsubmit = (values: any) => {
@@ -98,24 +98,47 @@ function Pokemones(){
    
    
     {pokemons.map(pokemon => (
-            
     <Col key={pokemon.id} span={3.5}>
-       <Card className="carta"  title={  <>
-    <span className="id">{pokemon.id}</span>
-    <span className="nombre">{pokemon.name}</span>
-  </> }   >
-
-         {pokemon.sprites?.front_default && (
-      <img className="imagencarta" src={pokemon.sprites.front_default} alt={pokemon.name} />
-       )}
-
-      <Button className="detalle"   onClick={() => navigate(`/estadisticas/${pokemon.id}`)}>Estadisticas</Button>
-       
-       <h1 className="tipos"> Tipo: {pokemon.types[0].type.name}</h1>
-
+      <Card
+        className={`carta${cartaVolteada === pokemon.id ? " volteada" : ""}`}
+        title={
+          <>
+            <span className="id">{pokemon.id}</span>
+            <span className="nombre">{pokemon.name}</span>
+          </>
+        }
+      >
+        <div className="contenedor-carta">
+          <div className="frente">
+            {pokemon.sprites?.front_default && (
+              <img className="imagencarta" src={pokemon.sprites.front_default} alt={pokemon.name} />
+            )}
+            <h1 className="tipos">Tipo: {pokemon.types[0].type.name}</h1>
+          </div>
+          <div className="atras">
+            <div className="contenido-atras">
+              <h3>Altura: {pokemon.height}</h3>
+              <h3>Peso: {pokemon.weight}</h3>
+              <h3>Habilidades</h3>
+              {pokemon.abilities.map(ability => (
+                <p key={ability.ability.name}>{ability.ability.name}</p>
+              ))}
+              <h3>Estadísticas</h3>
+              {pokemon.stats.map(stat => (
+                <p key={stat.stat.name}>{stat.stat.name}: {stat.base_stat}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+        <Button
+          className="detalle"
+          onClick={() => setCartaVolteada(cartaVolteada === pokemon.id ? null : pokemon.id)}
+        >
+          {cartaVolteada === pokemon.id ? "Ocultar Estadísticas" : "Estadísticas"}
+        </Button>
       </Card>
-   </Col>
-         ))}
+    </Col>
+  ))}
 </Row>
 
 
