@@ -76,6 +76,7 @@
 .datos-principales {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
   background: linear-gradient(135deg, rgba(138, 43, 226, 0.18), rgba(106, 13, 173, 0.1));
   border: 1px solid rgba(138, 43, 226, 0.15);
   border-radius: 8px;
@@ -92,12 +93,6 @@
   gap: 4px;
 }
 
-.datos-principales span::before {
-  content: "✦";
-  color: #b388ff;
-  font-size: 8px;
-}
-
 .seccion h3 {
   font-size: 9px;
   font-weight: 700;
@@ -112,11 +107,6 @@
   text-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
 
 .tag {
   font-size: 9px;
@@ -124,7 +114,7 @@
   padding: 3px 10px;
   background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(106, 13, 173, 0.12));
   border: 1px solid rgba(138, 43, 226, 0.2);
-  border-radius: 12px;
+  border-radius: 13px;
   transition: all 0.2s ease;
   font-weight: 500;
   text-transform: capitalize;
@@ -146,6 +136,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 6px;
   font-size: 10px;
   padding: 3px 7px;
   background: linear-gradient(135deg, rgba(138, 43, 226, 0.08), rgba(106, 13, 173, 0.04));
