@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import type {   pokemon,  pokemonsdetalle } from "../../api/pokeinfo/Models";
 import {  getpokemon,getpokemondetalle, busquedapokemon } from "../../api/pokeinfo";
+
 import {Card,  Col, Row, Form,Button,Input} from 'antd';
 
 
@@ -9,8 +10,8 @@ function Pokemones(){
   const [pokemons, setPokemons] = useState<pokemonsdetalle[]>([]);
   const [nextUrl, setNextUrl] = useState<string>("");
   const [previousUrl, setPreviousUrl] = useState<string>("");
-  const [count, setCount] = useState(0);
-   const [form] = Form.useForm();
+ 
+  const [form] = Form.useForm();
   
   const handleformsubmit = (values: any) => {
     busquedapokemon(values.search)
@@ -31,7 +32,7 @@ function Pokemones(){
     getpokemon().then(data => {
         setNextUrl(data.next);
         setPreviousUrl(data.previous);
-        setCount(data.count);
+        
         
 
         Promise.all(
@@ -78,7 +79,7 @@ function Pokemones(){
         getpokemon(nextUrl).then(data => {
             setNextUrl(data.next);
             setPreviousUrl(data.previous);
-            setCount(data.count);
+            
 
             Promise.all(
                 data.results.map((pokemon: pokemon) =>
@@ -108,7 +109,7 @@ function Pokemones(){
       <img className="imagencarta" src={pokemon.sprites.front_default} alt={pokemon.name} />
        )}
 
-      <Button className="detalle">Ver mas</Button>
+      <Button className="detalle"   onClick={() => navigate(`/estadisticas/${pokemon.id}`)}>Estadisticas</Button>
        
        <h1 className="tipos"> Tipo: {pokemon.types[0].type.name}</h1>
 

@@ -17,3 +17,11 @@ export function busquedapokemon(nombre: string) {
     )
     .then(response => response.json());
 }
+
+export function estadisticaspokemon(id : number) {
+    return fetch(
+        `https://pokeapi.co/api/v2/pokemon/${id}`
+        
+    )
+    .then(response => response.json());
+}

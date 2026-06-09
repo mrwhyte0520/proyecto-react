@@ -8,6 +8,7 @@ import Pokemones from './assets/Components/pokemones.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Pokemones></Pokemones>
-  </StrictMode>,
+    
+    <Pokemones ></Pokemones>
+  </StrictMode>
 )
