@@ -44,15 +44,16 @@
   color: #e0e0e0;
   padding: 10px;
   box-sizing: border-box;
-  background: rgba(20, 20, 45, 0.3);
-  border: 1px solid rgba(138, 43, 226, 0.15);
+  background: linear-gradient(160deg, rgba(30, 15, 60, 0.85), rgba(15, 10, 35, 0.9));
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  box-shadow: inset 0 0 30px rgba(138, 43, 226, 0.05);
   visibility: hidden;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(138, 43, 226, 0.3) transparent;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .carta.volteada .frente {
@@ -64,36 +65,51 @@
 }
 
 .atras::-webkit-scrollbar {
-  width: 4px;
+  width: 3px;
 }
 
 .atras::-webkit-scrollbar-thumb {
-  background: rgba(138, 43, 226, 0.3);
+  background: linear-gradient(to bottom, #8a2be2, #6a0dad);
   border-radius: 3px;
 }
 
 .datos-principales {
   display: flex;
   justify-content: space-between;
-  background: rgba(138, 43, 226, 0.12);
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #d0d0f0;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.18), rgba(106, 13, 173, 0.1));
+  border: 1px solid rgba(138, 43, 226, 0.15);
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #d0c0f0;
+  letter-spacing: 0.5px;
+}
+
+.datos-principales span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.datos-principales span::before {
+  content: "✦";
+  color: #b388ff;
+  font-size: 8px;
 }
 
 .seccion h3 {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
-  color: #b388ff;
+  color: #c8a0f0;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   margin: 0 0 5px;
   padding-bottom: 3px;
-  border-bottom: 1px solid rgba(138, 43, 226, 0.25);
+  border-bottom: 1px solid rgba(138, 43, 226, 0.15);
   width: 100%;
   text-align: left;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
 }
 
 .tags {
@@ -103,12 +119,21 @@
 }
 
 .tag {
-  font-size: 10px;
-  color: #c8c8e0;
-  padding: 2px 8px;
-  background: rgba(138, 43, 226, 0.15);
-  border-radius: 10px;
-  border: 1px solid rgba(138, 43, 226, 0.25);
+  font-size: 9px;
+  color: #d0c0e8;
+  padding: 3px 10px;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(106, 13, 173, 0.12));
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.tag:hover {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.35), rgba(106, 13, 173, 0.25));
+  border-color: rgba(138, 43, 226, 0.4);
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.2);
 }
 
 .stats-grid {
@@ -122,20 +147,29 @@
   justify-content: space-between;
   align-items: center;
   font-size: 10px;
-  padding: 3px 6px;
-  background: rgba(138, 43, 226, 0.08);
-  border-radius: 4px;
-  border-left: 2px solid rgba(138, 43, 226, 0.3);
+  padding: 3px 7px;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.08), rgba(106, 13, 173, 0.04));
+  border-radius: 5px;
+  border-left: 2px solid rgba(138, 43, 226, 0.25);
+  transition: all 0.2s ease;
+}
+
+.stat-item:hover {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.18), rgba(106, 13, 173, 0.1));
+  border-left-color: rgba(138, 43, 226, 0.6);
+  transform: translateX(2px);
 }
 
 .stat-nombre {
-  color: #a0a0c0;
+  color: #9080b0;
   text-transform: capitalize;
+  font-weight: 500;
 }
 
 .stat-valor {
-  color: #e0e0ff;
-  font-weight: 700;
+  color: #e8d0ff;
+  font-weight: 800;
+  text-shadow: 0 0 6px rgba(138, 43, 226, 0.3);
 }
 
 .carta:hover {
