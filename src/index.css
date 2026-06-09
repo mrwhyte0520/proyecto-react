@@ -6,9 +6,9 @@
 
 body {
   background: linear-gradient(
- #FFFFFF 0%,
-  #2563EB 50%,
-  #1E3A5F 100%);
+ #0b7660 0%,
+  #0a3423 50%,
+  #2fd7b8 100%);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
   min-height: 100vh;
@@ -41,27 +41,27 @@ body {
 }
 
 .BotonSiguiente {
-  background: linear-gradient(135deg, #1e90ff, #0066cc);
-  border-color: rgba(0, 102, 204, 0.4);
+  background: linear-gradient(135deg, #0c513e, #187323);
+  border-color: rgba(18, 150, 71, 0.4);
   left: 10px;
 }
 
 .BotonAtras {
-  background: linear-gradient(135deg, #4169e1, #1e3a8a);
-  border-color: rgba(30, 58, 138, 0.4);
+  background: linear-gradient(135deg, #0c513e, #187323);
+  border-color: rgba(30, 138, 48, 0.4);
   left: 160px;
 }
 
 .BotonSiguiente:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(30, 144, 255, 0.5), 0 0 40px rgba(0, 102, 204, 0.2);
-  border-color: rgba(0, 102, 204, 0.8);
+  box-shadow: 0 0 20px rgba(12, 130, 53, 0.5), 0 0 40px rgba(10, 212, 108, 0.2);
+  border-color: rgba(11, 113, 15, 0.8);
 }
 
 .BotonAtras:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(65, 105, 225, 0.5), 0 0 40px rgba(30, 58, 138, 0.2);
-  border-color: rgba(30, 58, 138, 0.8);
+  box-shadow: 0 0 20px rgba(12, 130, 53, 0.5), 0 0 40px rgba(10, 212, 108, 0.2);
+  border-color: rgba(30, 138, 61, 0.8);
 }
 
 .BotonSiguiente:active,
@@ -86,11 +86,11 @@ body {
 @keyframes carta {
   from {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.85);
+    transform: translate(-50%, -50%) perspective(800px) scale(0.85);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) perspective(800px) scale(1);
   }
 }
 
@@ -120,14 +120,17 @@ body {
 .Titulo {
     font-family: 'Pokemon';
     font-size: 4rem;
-    color: #E2E8F0;
-    -webkit-text-stroke: 3px #334155;
+    color: #d0d0d0;
+    -webkit-text-stroke:   2px rgb(12, 94, 27);
     text-align: center;
+     box-shadow: #2fd7b8 0px 0px 10px 0px;
+     background: linear-gradient(to right, rgb(4, 43, 52),rgb(4, 45, 53));
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 
 ::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.05);
@@ -135,10 +138,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #6a0dad, #3a0ca3);
+  background: linear-gradient(180deg, #01613e, #199c56);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #8b00ff, #5a0ddb);
+  background: linear-gradient(180deg, #679641, #068f31);
 }

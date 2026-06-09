@@ -2,10 +2,10 @@
   width: 275px;
   height: 385px;
   position: relative;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) perspective(800px);
   top: 50%;
   left: 60%;
-  background: linear-gradient(145deg, #6a0dad, rgba(14, 14, 34, 0.98));
+  background: linear-gradient(green,rgb(11, 107, 89));
   border: 3px solid rgba(218, 197, 240, 0.878);
   border-radius: 14px;
   padding: 16px 16px 20px;
@@ -17,22 +17,23 @@
 }
 
 .carta.volteada {
-  transform: translate(-50%, -50%) scale(1.5);
+  transform: translate(-50%, -50%) perspective(800px) scale(1.5);
   z-index: 10;
   transform-origin: center center;
-  border-color: #b388ff;
-  box-shadow: 0 0 80px rgba(138, 43, 226, 0.5), 0 0 120px rgba(106, 13, 173, 0.2);
+  border-color: #29c9f0;
+  box-shadow: 0 0 80px rgba(46, 169, 167, 0.5), 0 0 120px rgba(52, 188, 150, 0.2);
 }
 
 .contenedor-carta {
   display: grid;
   width: 100%;
   flex: 1;
+  transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .carta.volteada .contenedor-carta {
-  transform: scaleX(-1);
+  transform: rotateY(180deg);
 }
 
 .frente,
@@ -42,35 +43,24 @@
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
+  backface-visibility: hidden;
 }
 
-.frente {
-  visibility: visible;
-}
+
 
 .atras {
-  transform: scaleX(-1);
-  color: #e0e0e0;
+  transform: rotateY(180deg);
+  color: #ffffff;
   padding: 10px;
   box-sizing: border-box;
-  background: linear-gradient(160deg, rgba(30, 15, 60, 0.85), rgba(15, 10, 35, 0.9));
-  border: 1px solid rgba(138, 43, 226, 0.3);
+  background: linear-gradient(160deg, rgba(31, 60, 15, 0.85), rgba(57, 190, 27, 0.9));
+  border: 1px solid rgba(43, 226, 67, 0.3);
   box-shadow: inset 0 0 30px rgba(138, 43, 226, 0.05);
-  visibility: hidden;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(138, 43, 226, 0.3) transparent;
-  display: flex;
   flex-direction: column;
   gap: 6px;
-}
-
-.carta.volteada .frente {
-  visibility: hidden;
-}
-
-.carta.volteada .atras {
-  visibility: visible;
 }
 
 .atras::-webkit-scrollbar {
@@ -86,13 +76,13 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.18), rgba(106, 13, 173, 0.1));
+  background: linear-gradient(135deg, rgba(43, 226, 49, 0.18), rgba(155, 216, 118, 0.1));
   border: 1px solid rgba(138, 43, 226, 0.15);
   border-radius: 8px;
   padding: 7px 10px;
   font-size: 11px;
   font-weight: 700;
-  color: #d0c0f0;
+  color: #edecec;
   letter-spacing: 0.5px;
 }
 
@@ -105,7 +95,7 @@
 .seccion h3 {
   font-size: 9px;
   font-weight: 700;
-  color: #c8a0f0;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0 0 5px;
@@ -119,7 +109,7 @@
 
 .tag {
   font-size: 9px;
-  color: #d0c0e8;
+  color: #ffffff;
   padding: 3px 10px;
   background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(106, 13, 173, 0.12));
   border: 1px solid rgba(138, 43, 226, 0.2);
@@ -130,9 +120,9 @@
 }
 
 .tag:hover {
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.35), rgba(106, 13, 173, 0.25));
-  border-color: rgba(138, 43, 226, 0.4);
-  box-shadow: 0 0 8px rgba(138, 43, 226, 0.2);
+  background: linear-gradient(135deg, rgba(194, 224, 221, 0.35), rgba(13, 173, 122, 0.25));
+  border-color: rgba(43, 226, 119, 0.4);
+  box-shadow: 0 0 8px rgba(43, 226, 128, 0.2);
 }
 
 .stats-grid {
@@ -148,33 +138,33 @@
   gap: 6px;
   font-size: 10px;
   padding: 3px 7px;
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.08), rgba(106, 13, 173, 0.04));
+  background: linear-gradient(135deg, rgba(59, 205, 147, 0.08), rgba(37, 152, 118, 0.04));
   border-radius: 5px;
-  border-left: 2px solid rgba(138, 43, 226, 0.25);
+  border-left: 2px solid rgba(27, 200, 163, 0.25);
   transition: all 0.2s ease;
 }
 
 .stat-item:hover {
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.18), rgba(106, 13, 173, 0.1));
-  border-left-color: rgba(138, 43, 226, 0.6);
+  background: linear-gradient(135deg, rgba(10, 172, 110, 0.18), rgba(9, 69, 34, 0.1));
+  border-left-color: rgba(43, 226, 214, 0.6);
   transform: translateX(2px);
 }
 
 .stat-nombre {
-  color: #9080b0;
+  color: #ffffff;
   text-transform: capitalize;
   font-weight: 500;
 }
 
 .stat-valor {
-  color: #e8d0ff;
+  color: #ffffff;
   font-weight: 800;
-  text-shadow: 0 0 6px rgba(138, 43, 226, 0.3);
+  text-shadow: 0 0 6px rgba(43, 226, 153, 0.3);
 }
 
 .carta:hover {
-  box-shadow: 0 0 70px rgba(187, 111, 215, 0.4), 0 0 60px rgba(138, 43, 226, 0.1);
-  border-color: rgba(138, 43, 226, 0.6);
+  box-shadow: 0 0 70px rgba(111, 215, 170, 0.4), 0 0 60px rgba(43, 226, 165, 0.1);
+  border-color: rgba(43, 226, 186, 0.6);
 }
 
 .imagencarta {
@@ -182,15 +172,15 @@
   height: 200px;
   object-fit: contain;
   padding: 12px;
-  background: rgba(20, 20, 45, 0.6);
-  border: 2px dashed rgba(138, 43, 226, 0.25);
+  background: rgba(20, 45, 35, 0.6);
+  border: 2px dashed rgba(43, 226, 76, 0.25);
   border-radius: 10px;
   transition: all 0.3s ease;
 }
 
 .carta:hover .imagencarta {
-  border-color: rgba(138, 43, 226, 0.5);
-  box-shadow: 0 0 16px rgba(138, 43, 226, 0.2), inset 0 0 16px rgba(138, 43, 226, 0.05);
+  border-color: rgba(52, 226, 43, 0.5);
+  box-shadow: 0 0 16px rgba(138, 43, 226, 0.2), inset 0 0 16px rgba(43, 226, 58, 0.05);
 }
 
 .container {
@@ -217,7 +207,7 @@
 
 .ant-card-head {
   background: transparent !important;
-  border-bottom: 3px solid rgba(138, 43, 226, 0.2) !important;
+  border-bottom: 3px solid rgba(43, 226, 83, 0.2) !important;
   color: #e0e0e0 !important;
   font-weight: 700;
   text-transform: capitalize;
@@ -257,7 +247,7 @@
 .tipos {
   margin: 8px 0 0;
   font-size: 14px;
-  color: #b388ff;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
@@ -274,8 +264,8 @@ form {
 }
 
 .ant-input {
-  background: rgba(30, 30, 60, 0.8) !important;
-  border: 1px solid rgba(138, 43, 226, 0.3) !important;
+  background: rgba(72, 132, 47, 0.8) !important;
+  border: 1px solid rgba(25, 99, 29, 0.3) !important;
   border-radius: 8px !important;
   color: #e0e0e0 !important;
   padding: 10px 16px !important;
@@ -287,18 +277,18 @@ form {
 
 .ant-input:focus,
 .ant-input:hover {
-  border-color: rgba(138, 43, 226, 0.7) !important;
-  box-shadow: 0 0 12px rgba(138, 43, 226, 0.2) !important;
-  background: rgba(40, 40, 80, 0.9) !important;
+  border-color: rgba(118, 223, 6, 0.7) !important;
+  box-shadow: 0 0 12px rgba(43, 226, 192, 0.2) !important;
+  background: rgba(36, 111, 31, 0.9) !important;
 }
 
 .ant-input::placeholder {
-  color: rgba(224, 224, 224, 0.4) !important;
+  color: rgb(255, 255, 255) !important;
 }
 
 .ant-btn-primary {
-  background: linear-gradient(135deg, #6a0dad, #3a0ca3) !important;
-  border: 1px solid rgba(138, 43, 226, 0.4) !important;
+  background: linear-gradient(135deg, #0c513e, #187323) !important;
+  border: 1px solid rgba(43, 226, 67, 0.4) !important;
   border-radius: 8px !important;
   height: 42px !important;
   padding: 0 24px !important;
@@ -315,8 +305,8 @@ margin-left: 25%;
 
 .ant-btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(138, 43, 226, 0.4) !important;
-  border-color: rgba(138, 43, 226, 0.7) !important;
+  box-shadow: 0 0 20px rgba(55, 226, 43, 0.4) !important;
+  border-color: rgba(43, 226, 137, 0.7) !important;
 }
 
 .ant-btn-primary:active {
