@@ -2,17 +2,34 @@ import { useState,useEffect } from "react";
 import type {   pokemon,  pokemonsdetalle } from "../../api/pokeinfo/Models";
 import {  getpokemon,getpokemondetalle, busquedapokemon } from "../../api/pokeinfo";
 
-import {Card,  Col, Row, Form,Input,Button} from 'antd';
+import {Card,  Col, Row, Form,Input,Button, Pagination} from 'antd';
 
 
  
 function Pokemones(){
   const [pokemons, setPokemons] = useState<pokemonsdetalle[]>([]);
-  const [nextUrl, setNextUrl] = useState<string>("");
-  const [previousUrl, setPreviousUrl] = useState<string>("");
+  const [count, setCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize] = useState(20);
   const [cartaVolteada, setCartaVolteada] = useState<number | null>(null);
   const [form] = Form.useForm();
-  
+
+  const fetchPokemonPage = (page: number) => {
+    const offset = (page - 1) * pageSize;
+    getpokemon(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${pageSize}`).then(data => {
+      setCount(data.count);
+      setCurrentPage(page);
+
+      Promise.all(
+        data.results.map((pokemon: pokemon) =>
+          getpokemondetalle(pokemon.url)
+        )
+      ).then(detalles => {
+        setPokemons(detalles);
+      });
+    });
+  };
+
   const handleformsubmit = (values: any) => {
     busquedapokemon(values.search)
         .then(data => {
@@ -29,20 +46,7 @@ function Pokemones(){
 }
 
   useEffect(() => {
-    getpokemon().then(data => {
-        setNextUrl(data.next);
-        setPreviousUrl(data.previous);
-        
-        
-
-        Promise.all(
-            data.results.map((pokemon: pokemon) =>
-                getpokemondetalle(pokemon.url)
-            )
-        ).then(detalles => {
-            setPokemons(detalles);
-        });
-    });
+    fetchPokemonPage(1);
 }, []);
    console.log(pokemons);
  return <div>
@@ -58,45 +62,6 @@ function Pokemones(){
             </Button>
         </Form.Item>
     </Form>
-    <button className="BotonAtras"  disabled={!previousUrl} onClick={() => {
-        getpokemon(previousUrl).then(data => {
-            setNextUrl(data.next);
-            setPreviousUrl(data.previous);
-           
-
-            Promise.all(
-                data.results.map((pokemon: pokemon) =>
-                    getpokemondetalle(pokemon.url)
-                )
-            ).then(detalles => {
-                setPokemons(detalles);
-            });
-        });
-    }}>
-        Anterior
-    </button>
-    <button className="BotonSiguiente" disabled={!nextUrl} onClick={() => {
-        getpokemon(nextUrl).then(data => {
-            setNextUrl(data.next);
-            setPreviousUrl(data.previous);
-            
-
-            Promise.all(
-                data.results.map((pokemon: pokemon) =>
-                    getpokemondetalle(pokemon.url)
-                )
-            ).then(detalles => {
-                setPokemons(detalles);
-            });
-        });
-    }}
-
-    >  Siguiente</button>
-
-    <button className="BotonRefrescar" onClick={() => window.location.reload()}>
-      Refrescar
-    </button>
-
    <Row gutter={[16, 16]}>
 
    
@@ -155,12 +120,28 @@ function Pokemones(){
   ))}
 </Row>
 
+    <div className="paginacion-container">
+      <Pagination
+        current={currentPage}
+        total={count}
+        pageSize={pageSize}
+        onChange={(page) => fetchPokemonPage(page)}
+        showSizeChanger={false}
+      />
+      <div className="botones-navegacion">
+        <button className="BotonAtras" disabled={currentPage <= 1} onClick={() => fetchPokemonPage(currentPage - 1)}>
+          Anterior
+        </button>
+        <button className="BotonSiguiente" disabled={currentPage * pageSize >= count} onClick={() => fetchPokemonPage(currentPage + 1)}>
+          Siguiente
+        </button>
+        <button className="BotonRefrescar" onClick={() => window.location.reload()}>
+          Refrescar
+        </button>
+      </div>
+    </div>
 
-
- 
-
-
- </div> 
+ </div>
 
 }
 export default Pokemones

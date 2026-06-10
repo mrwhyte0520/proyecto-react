@@ -316,3 +316,99 @@ margin-left: 25%;
 .ant-form-item {
   margin-bottom: 0 !important;
 }
+
+.paginacion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding-bottom: 30px;
+  width: 100%;
+}
+
+.paginacion-container .ant-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.botones-navegacion {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.botones-navegacion button {
+  background: linear-gradient(135deg, #0c513e, #187323);
+  border: 1px solid rgba(43, 226, 67, 0.4);
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.botones-navegacion button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.botones-navegacion button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(55, 226, 43, 0.4);
+  border-color: rgba(43, 226, 137, 0.7);
+}
+
+.ant-pagination .ant-pagination-item {
+  background: rgba(12, 81, 62, 0.8) !important;
+  border-color: rgba(43, 226, 67, 0.3) !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-pagination .ant-pagination-item a {
+  color: #a0d8a0 !important;
+}
+
+.ant-pagination .ant-pagination-item:hover {
+  border-color: rgba(43, 226, 137, 0.7) !important;
+  box-shadow: 0 0 12px rgba(55, 226, 43, 0.3) !important;
+}
+
+.ant-pagination .ant-pagination-item-active {
+  background: linear-gradient(135deg, #0c513e, #187323) !important;
+  border-color: rgba(43, 226, 67, 0.7) !important;
+  box-shadow: 0 0 16px rgba(55, 226, 43, 0.4) !important;
+}
+
+.ant-pagination .ant-pagination-item-active a {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+.ant-pagination .ant-pagination-prev button,
+.ant-pagination .ant-pagination-next button {
+  background: rgba(12, 81, 62, 0.8) !important;
+  border-color: rgba(43, 226, 67, 0.3) !important;
+  border-radius: 6px !important;
+  color: #a0d8a0 !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-pagination .ant-pagination-prev:hover button,
+.ant-pagination .ant-pagination-next:hover button {
+  border-color: rgba(43, 226, 137, 0.7) !important;
+  box-shadow: 0 0 12px rgba(55, 226, 43, 0.3) !important;
+}
+
+.ant-pagination .ant-pagination-disabled button {
+  opacity: 0.4 !important;
+}
+
+.ant-pagination .ant-pagination-ellipsis {
+  color: #a0d8a0 !important;
+}

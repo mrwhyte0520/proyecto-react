@@ -25,3 +25,4 @@ export function estadisticaspokemon(id : number) {
     )
     .then(response => response.json());
 }
+
