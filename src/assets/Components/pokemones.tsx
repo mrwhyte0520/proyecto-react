@@ -93,6 +93,10 @@ function Pokemones(){
 
     >  Siguiente</button>
 
+    <button className="BotonRefrescar" onClick={() => window.location.reload()}>
+      Refrescar
+    </button>
+
    <Row gutter={[16, 16]}>
 
    
