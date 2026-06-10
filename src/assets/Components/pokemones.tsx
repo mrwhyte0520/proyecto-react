@@ -11,7 +11,7 @@ function Pokemones(){
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(20);
-  const [cartaVolteada, setCartaVolteada] = useState<number | null>(null);
+const [cartaVolteada, setCartaVolteada] = useState<number | null>(null);
   const [form] = Form.useForm();
 
   const fetchPokemonPage = (page: number) => {
@@ -29,7 +29,7 @@ function Pokemones(){
       });
     });
   };
-
+  
   const handleformsubmit = (values: any) => {
     busquedapokemon(values.search)
         .then(data => {
@@ -94,15 +94,15 @@ function Pokemones(){
                 <span>Peso: {pokemon.weight}</span>
               </div>
               <div className="seccion">
-                <h3>Habilidades</h3>
+    <h3>Habilidades</h3>
                 <div className="tags">
                   {pokemon.abilities.map(ability => (
                     <span key={ability.ability.name} className="tag">{ability.ability.name}</span>
-                  ))}
+    ))}
                 </div>
               </div>
               <div className="seccion">
-                <h3>Estadísticas</h3>
+    <h3>Estadísticas</h3>
                 <div className="stats-grid">
                   {pokemon.stats.map(stat => (
                     <div key={stat.stat.name} className="stat-item">
@@ -141,7 +141,7 @@ function Pokemones(){
       </div>
     </div>
 
- </div>
+ </div> 
 
 }
 export default Pokemones

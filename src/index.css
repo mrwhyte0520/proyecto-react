@@ -84,7 +84,7 @@ body {
   overflow: hidden;
   border: 1px solid;
   z-index: 10;
-  background: linear-gradient(135deg, #1a3a5c, #2563a0);
+  background: linear-gradient(135deg, #4d9aec, #2563a0);
   border-color: rgba(59, 130, 246, 0.4);
   left: 310px;
 }
